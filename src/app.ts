@@ -14,5 +14,5 @@ async function Main() {
   });
 
   await server.start();
-  await MongoDB.connection();
+  MongoDB.connection();
 }
