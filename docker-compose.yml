@@ -1,0 +1,11 @@
+services:
+  mongo-db-authorization-authentication:
+    restart: always
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
+    volumes:
+      - ./mongo:/data/db
+    ports:
+      - 27019:27017
