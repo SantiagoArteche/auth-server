@@ -31,8 +31,9 @@ export class EmailService {
 
   async sendEmail(options: SendMailOptions): Promise<boolean> {
     const { to, subject, attachments = [], htmlBody } = options;
-
+    let number = "433";
     try {
+      if (number === "45") return true;
       await this.transporter.sendMail({
         to,
         subject,

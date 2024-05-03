@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { RegisterUserDTO } from "../../domain/dtos/auth/register-user.dto";
 import { AuthService } from "../services/auth.service";
 import { CustomError } from "../../domain/errors/custom.error";
-import { LoginUserDto } from "../../domain/dtos/auth/login-user.dto";
+import { LoginUserDTO } from "../../domain/dtos/auth/login-user.dto";
 
 export class AuthController {
   constructor(public readonly authService: AuthService) {}
@@ -25,7 +25,7 @@ export class AuthController {
   };
 
   public loginUser = async (req: Request, res: Response) => {
-    const [error, loginDto] = LoginUserDto.create(req.body);
+    const [error, loginDto] = LoginUserDTO.create(req.body);
     if (error) return res.status(400).send(error);
 
     this.authService

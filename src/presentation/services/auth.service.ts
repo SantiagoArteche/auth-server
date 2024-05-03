@@ -3,7 +3,7 @@ import { RegisterUserDTO } from "../../domain/dtos/auth/register-user.dto";
 import { CustomError } from "../../domain/errors/custom.error";
 import "dotenv/config";
 import { UserEntity } from "../../domain/entities/user.entity";
-import { LoginUserDto } from "../../domain/dtos/auth/login-user.dto";
+import { LoginUserDTO } from "../../domain/dtos/auth/login-user.dto";
 import { validatePasswords } from "../../config/bcrypt";
 import { generateJWT, validateToken } from "../../config/jwt";
 import { EmailService } from "../../config/nodemailer";
@@ -34,7 +34,7 @@ export class AuthService {
     }
   }
 
-  public async loginUser(loginUserDto: LoginUserDto) {
+  public async loginUser(loginUserDto: LoginUserDTO) {
     try {
       const user = await userModel.findOne({
         email: loginUserDto.email,
@@ -101,6 +101,6 @@ export class AuthService {
 
     await updateValidateEmail?.save();
 
-    return "Email validated!";
+    return "Email was validated!";
   }
 }

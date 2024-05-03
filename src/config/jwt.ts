@@ -16,12 +16,12 @@ export const generateJWT = (payload: any, duration: string = "2h") => {
   });
 };
 
-export const validateToken = (token: string) => {
+export const validateToken = <T>(token: string): Promise<T | null> => {
   return new Promise((resolve) => {
     jwt.verify(token, process.env.SEED!, (err, decoded) => {
       if (err) return resolve(null);
 
-      resolve(decoded);
+      resolve(decoded as T);
     });
   });
 };
