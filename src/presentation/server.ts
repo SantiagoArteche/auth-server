@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-
+import fileUpload from "express-fileupload";
 interface ServerOptions {
   PORT: number;
   routes: Router;
@@ -20,6 +20,11 @@ export class Server {
   async start() {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(
+      fileUpload({
+        limits: { fileSize: 50 * 1024 * 1024 },
+      })
+    );
 
     this.app.use(this.routes);
 
